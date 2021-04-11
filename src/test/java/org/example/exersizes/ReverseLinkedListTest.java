@@ -35,4 +35,32 @@ class ReverseLinkedListTest {
         }
 
     }
+
+    @Test
+    void reverseListRecursive() {
+
+        ListNode head = new ListNode(0);
+
+        ListNode currentItem = head;
+        for(int i=1;i<5;i++) {
+            ListNode next = new ListNode(i);
+            currentItem.next = next;
+            currentItem = currentItem.next;
+        }
+
+        currentItem = head;
+        while (currentItem!=null) {
+            System.out.println("before = "+currentItem.val);
+            currentItem = currentItem.next;
+        }
+
+        ListNode headR = reverseLinkedList.reverseListRecursive(head);
+
+        currentItem = headR;
+        while (currentItem!=null) {
+            System.out.println("After = "+currentItem.val);
+            currentItem = currentItem.next;
+        }
+
+    }
 }
