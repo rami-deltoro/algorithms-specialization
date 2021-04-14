@@ -1,5 +1,7 @@
 package org.example.stanford;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  *              1. Create two empty arrays
  *  SPLIT ARRAY 2. Copy 0-mid elements into leftArray
@@ -10,6 +12,7 @@ package org.example.stanford;
  *
  *  Time Complexity : O(n logn)
  */
+@Slf4j
 public class MergeSort {
 
     public void sort(int[] array, int n) {
@@ -29,9 +32,14 @@ public class MergeSort {
             rightArray[i-mid] = array[i];
         }
 
+        log.info("Before left Sort. n={}",n);
         sort(leftArray,mid);
+        log.info("After left Sort. n={}",n);
         sort(rightArray,n-mid);
+        log.info("After right Sort. n={}",n);
+
         merge(array,leftArray,rightArray,mid,n-mid);
+        log.info("After merge. n={}",n);
 
     }
 
