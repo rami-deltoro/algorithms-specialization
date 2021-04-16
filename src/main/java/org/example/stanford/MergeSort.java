@@ -2,6 +2,8 @@ package org.example.stanford;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+
 /**
  *              1. Create two empty arrays
  *  SPLIT ARRAY 2. Copy 0-mid elements into leftArray
@@ -32,15 +34,18 @@ public class MergeSort {
             rightArray[i-mid] = array[i];
         }
 
-        log.info("Before left Sort. n={}",n);
         sort(leftArray,mid);
-        log.info("After left Sort. n={}",n);
         sort(rightArray,n-mid);
-        log.info("After right Sort. n={}",n);
+
+        if(leftArray.length == 5 && rightArray.length ==5) {
+            log.info("After right Sort. array={} ", Arrays.toString(array));
+        }
 
         merge(array,leftArray,rightArray,mid,n-mid);
-        log.info("After merge. n={}",n);
 
+        if(leftArray.length == 5 && rightArray.length ==5) {
+            log.info("After merge Sort. array={} ", Arrays.toString(array));
+        }
     }
 
     /*
