@@ -37,15 +37,7 @@ public class MergeSort {
         sort(leftArray,mid);
         sort(rightArray,n-mid);
 
-        if(leftArray.length == 5 && rightArray.length ==5) {
-            log.info("After right Sort. array={} ", Arrays.toString(array));
-        }
-
         merge(array,leftArray,rightArray,mid,n-mid);
-
-        if(leftArray.length == 5 && rightArray.length ==5) {
-            log.info("After merge Sort. array={} ", Arrays.toString(array));
-        }
     }
 
     /*
