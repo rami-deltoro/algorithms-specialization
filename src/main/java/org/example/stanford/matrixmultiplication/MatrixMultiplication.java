@@ -2,6 +2,7 @@ package org.example.stanford.matrixmultiplication;
 
 import lombok.extern.slf4j.Slf4j;
 
+
 @Slf4j
 public class MatrixMultiplication {
 
@@ -36,6 +37,7 @@ public class MatrixMultiplication {
             int[][] BG = divideAndConquerMatrixMultiplication(X, Y, rowA, colA+newSize, rowB+newSize, colB, newSize);
             sumMatrix(RESULT,AE,BG,0,0);
 
+
             int[][] AF = divideAndConquerMatrixMultiplication(X, Y, rowA, colA, rowB, colB + newSize, newSize);
             int[][] BH = divideAndConquerMatrixMultiplication(X, Y, rowA, colA+newSize, rowB+newSize, colB+newSize, newSize);
             sumMatrix(RESULT,AF,BH,0,newSize);
@@ -48,10 +50,9 @@ public class MatrixMultiplication {
             int[][] DH = divideAndConquerMatrixMultiplication(X, Y, rowA+newSize, colA+newSize, rowB+newSize, colB+newSize, newSize);
             sumMatrix(RESULT,CF,DH,newSize,newSize);
 
-
-
-
         }
+
+
 
         return RESULT;
 
