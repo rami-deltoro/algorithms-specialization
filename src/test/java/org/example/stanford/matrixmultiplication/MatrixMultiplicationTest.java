@@ -20,5 +20,10 @@ class MatrixMultiplicationTest {
         System.out.println("******************************");
         Arrays.stream(matrixMultiplication.divideAndConquerMatrixMultiplication(x,y,0,0,0,0,x.length))
                 .forEach(ints -> System.out.println(Arrays.toString(ints)));
+
+
+        System.out.println("******************************");
+        Arrays.stream(matrixMultiplication.multiply(x,y))
+                .forEach(ints -> System.out.println(Arrays.toString(ints)));
     }
 }
