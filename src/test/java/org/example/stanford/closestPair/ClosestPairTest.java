@@ -1,11 +1,10 @@
-package org.example.stanford;
+package org.example.stanford.closestPair;
 
 import org.example.model.Point;
+import org.example.stanford.closestpair.ClosestPair;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ClosestPairTest {
 
@@ -27,5 +26,12 @@ class ClosestPairTest {
 
         Arrays.stream(closestPair.bruteForce(points))
                 .forEach(System.out::println);
+    }
+
+    @Test
+    void oneDimension() {
+        int[] points = new int[]{11,22,33,44,55,66,67,77,88,99};
+
+        System.out.println(Arrays.toString(closestPair.oneDimension(points)));
     }
 }

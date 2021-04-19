@@ -1,12 +1,20 @@
-package org.example.stanford;
+package org.example.stanford.closestpair;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.model.Point;
 
+
 @Slf4j
 public class ClosestPair {
 
+    ClosestPairMergeSort closestPairMergeSort = new ClosestPairMergeSort();
 
+    /*
+        Piggy backing merge sort, Time Complexity O(n logn)
+     */
+    public int[] oneDimension(int[] points) {
+        return closestPairMergeSort.sort(points,points.length);
+    }
 
     public Point[] bruteForce(Point[] points) {
 

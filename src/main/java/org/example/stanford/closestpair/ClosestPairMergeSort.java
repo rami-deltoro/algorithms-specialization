@@ -1,4 +1,4 @@
-package org.example.stanford;
+package org.example.stanford.closestpair;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,11 +14,16 @@ import lombok.extern.slf4j.Slf4j;
  *  Time Complexity : O(n logn)
  */
 @Slf4j
-public class MergeSort {
+public class ClosestPairMergeSort {
 
-    public void sort(int[] array, int n) {
+//    public int[] sort(int[] array, int n) {
+//        int[] minPair = new int[2];
+//
+//    }
+
+    public int[] sort(int[] array, int n) {
         if(n < 2) {
-            return;
+            return new int[]{0,0};
         }
 
         int mid = n / 2;
@@ -36,14 +41,16 @@ public class MergeSort {
         sort(leftArray,mid);
         sort(rightArray,n-mid);
 
-        merge(array,leftArray,rightArray,mid,n-mid);
+        return merge(array,leftArray,rightArray,mid,n-mid);
     }
 
     /*
         1. Compare each element from the array and store into the original array
         2. Add remaining elements from split array into original array.
      */
-    private void merge(int[] array, int[] leftArray, int[] rightArray,int leftEndIndex,int rightEndIndex) {
+    private int[] merge(int[] array, int[] leftArray, int[] rightArray,int leftEndIndex,int rightEndIndex) {
+        int[] minPair = new int[2];
+        int min = Integer.MAX_VALUE;
 
         int leftIndexCounter=0;
         int rightIndexCounter=0;
@@ -57,20 +64,54 @@ public class MergeSort {
                 array[arrayIndex] = rightArray[rightIndexCounter];
                 rightIndexCounter++;
             }
+
+            if(arrayIndex>1) {
+                int distance = array[arrayIndex] - array[arrayIndex-1];
+                if(distance < min) {
+                    min = distance;
+                    minPair[0] = arrayIndex-1;
+                    minPair[1] = arrayIndex;
+                }
+            }
+
             arrayIndex++;
         }
 
         while(leftIndexCounter < leftEndIndex) {
             array[arrayIndex] = leftArray[leftIndexCounter];
             leftIndexCounter++;
+            if(arrayIndex>1) {
+                int distance = array[arrayIndex] - array[arrayIndex-1];
+                if(distance < min) {
+                    min = distance;
+                    minPair[0] = arrayIndex-1;
+                    minPair[1] = arrayIndex;
+                }
+            }
+
             arrayIndex++;
+
+
         }
 
         while(rightIndexCounter < rightEndIndex) {
             array[arrayIndex] = rightArray[rightIndexCounter];
             rightIndexCounter++;
+            if(arrayIndex>1) {
+                int distance = array[arrayIndex] - array[arrayIndex-1];
+                if(distance < min) {
+                    min = distance;
+                    minPair[0] = arrayIndex-1;
+                    minPair[1] = arrayIndex;
+                }
+            }
+
             arrayIndex++;
+
+
         }
+
+        return minPair;
     }
 
 }
