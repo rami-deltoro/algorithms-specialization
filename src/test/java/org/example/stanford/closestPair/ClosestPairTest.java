@@ -45,10 +45,11 @@ class ClosestPairTest {
                 new Point(102,89),
                 new Point(567,982),
                 new Point(223,122),
-                new Point(2,2),
-                new Point(4423,2322),
+                new Point(3,2),
+                new Point(300,45),
+                new Point(250,25),
         };
 
-        closestPair.findClosestDistance(points);
+        System.out.println(closestPair.findClosestDistance(points));
     }
 }
