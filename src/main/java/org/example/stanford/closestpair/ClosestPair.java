@@ -25,6 +25,12 @@ public class ClosestPair {
         return Math.sqrt(Math.pow((p1.getX()-p2.getX()),2)+Math.pow((p1.getY()-p2.getY()),2));
     }
 
+    /*
+        1. Sort Based on X & Y.
+            a. X sort helps to divide
+            b. Y sort helps when conquering the mid strip
+
+     */
     public double findClosestDistance(Point[] points) {
         final Point[] pointsSortedByX = new Point[points.length];
         final Point[] pointsSortedByY = new Point[points.length];
