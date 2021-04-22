@@ -2,7 +2,16 @@ package org.example.stanford.matrixmultiplication;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Master Method
+ *
+ * a = 8 :: Number of Recursive calls
+ * b = 2 :: Factor smaller than input. Half the size of original array. Thus 2.
+ * d = 2 :: Only calculations
+ *
+ *  This puts us on case 3 since a > b^d => 8 > 2^2 => O(n^log2 8) = > O(n^3)
 
+ */
 @Slf4j
 public class MatrixMultiplication {
 

@@ -4,7 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 
-
+/**
+ * Master Method :
+ *
+ * a = 3 :: Number of Recursive calls
+ * b = 2 :: Factor smaller than input. Half the size of original number. Thus 2.
+ * d = 1 :: Only calculations
+ *
+ *  This puts us on case 3 since a > b^d => 3 = 2^1 => O(n^log2 3) = > O(n^1.59)
+ */
 @Slf4j
 public class KaratsubaMultiplication {
 

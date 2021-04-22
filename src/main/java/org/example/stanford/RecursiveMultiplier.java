@@ -2,6 +2,14 @@ package org.example.stanford;
 
 /**
  * RecIntMult
+ *
+ * Master Method :
+ *
+ * a = 4 :: Number of Recursive calls
+ * b = 2 :: Factor smaller than input. Half the size of original array. Thus 2.
+ * d = 1 :: Only calculations
+ *
+ *  This puts us on case 3 since a > b^d => 4 > 2^1 => O(n^log2 4) = > O(n^2)
  */
 public class RecursiveMultiplier {
 

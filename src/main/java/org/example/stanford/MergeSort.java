@@ -12,6 +12,15 @@ import lombok.extern.slf4j.Slf4j;
  *              6. Merge leftArray & rightArray
  *
  *  Time Complexity : O(n logn)
+ *
+ *  Master Method :
+ *
+ *  a = 2 :: Number of Recursive calls | SortLeft & Sort Right
+ *  b = 2 :: Factor smaller than input. Half the size of original array. Thus 2.
+ *  d = 1 :: The merge is done in constant time o(1), Thus 1.
+ *
+ *  This puts us on case 1 since a = b^d => 2 = 2^1 => O(n^d logn)
+ *
  */
 @Slf4j
 public class MergeSort {
