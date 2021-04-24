@@ -6,11 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AddStringsTest {
 
-    AddStrings addStrings = new AddStrings();
+    private final AddStrings addStrings = new AddStrings();
 
     @Test
     void addStrings() {
         String total = addStrings.addStrings("456","77");
-        System.out.println("total = "+total);
+        assertEquals(533,Integer.valueOf(addStrings.addStrings("456","77")));
     }
 }

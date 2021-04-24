@@ -29,7 +29,7 @@ public class CountInversions {
     /*
         O(n logn) piggy back off mergeSort.
      */
-    public int countInversions(int[] array, int n) {
+    public long countInversions(int[] array, int n) {
         if(n==1) {
             return 0;
         }
@@ -46,16 +46,15 @@ public class CountInversions {
             rightArray[i-mid] = array[i];
         }
 
-        int x = countInversions(leftArray,mid);
-        int y = countInversions(rightArray,n-mid);
-        int z = countInversions(array,leftArray,rightArray,mid,n-mid);
+        long x = countInversions(leftArray,mid);
+        long y = countInversions(rightArray,n-mid);
+        long z = countInversions(array,leftArray,rightArray,mid,n-mid);
 
         return x + y + z;
 
     }
 
-    private int countInversions(int[] array, int[] leftArray, int[] rightArray,int leftEndIndex,int rightEndIndex) {
-        log.info("Array={}",Arrays.toString(array));
+    private long countInversions(int[] array, int[] leftArray, int[] rightArray,int leftEndIndex,int rightEndIndex) {
         int count = 0;
 
         int leftIndexCounter=0;
