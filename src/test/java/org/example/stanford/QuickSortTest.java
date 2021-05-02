@@ -66,11 +66,4 @@ class QuickSortTest {
 
 
     }
-
-
-    @Test
-    void test() {
-        int i = 7 / 2;
-        System.out.println(i);
-    }
 }
