@@ -8,6 +8,15 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ *  Master Method :
+ *
+ *  a = 1 :: Number of Recursive calls | Chose one side to recurse on
+ *  b = 2 :: Factor smaller than input. Half the size of original array when we choose the median as the pivot
+ *  d = 1 :: The merge is done in constant time o(1), Thus 1.
+ *
+ *  This puts us on case 2 since a < b^d => 1 < 2^1 => O(n^1) = O(n)
+ */
 @Slf4j
 public class RSelect {
 
