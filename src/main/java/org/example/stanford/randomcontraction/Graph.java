@@ -7,22 +7,20 @@ import org.example.model.Vertex;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Scanner;
+import java.util.*;
 
 @Slf4j
 @Data
 public class Graph {
 
-    private Hashtable<Integer, Vertex> vertices;
-    private ArrayList<Edge> edges;
+    private Map<Integer, Vertex> vertices;
+    private List<Edge> edges;
 
 
+    //TODO combine loops
     public Graph(File inputFile) throws FileNotFoundException {
-        vertices = new Hashtable<Integer, Vertex>();
-        edges = new ArrayList<Edge>();
+        vertices = new HashMap<>();
+        edges = new ArrayList<>();
 
         Scanner in = new Scanner(inputFile);
         //add all vertices
@@ -30,7 +28,7 @@ public class Graph {
             Scanner line = new Scanner(in.nextLine());
             int id = line.nextInt();
             Vertex v = new Vertex(id);
-            log.info("Adding all Vertices :: Creating new Vertex with id = {}",id);
+            //log.info("Adding all Vertices :: Creating new Vertex with id = {}",id);
             vertices.put(id, v);
         }
         in = new Scanner(inputFile);
@@ -68,18 +66,17 @@ public class Graph {
 
     public void printGraph(){
         System.out.println("vertices:");
-        Enumeration<Integer> enumKey = vertices.keys();
-        while (enumKey.hasMoreElements()){
-            Integer id = enumKey.nextElement();
+        Set<Integer> keySet = vertices.keySet();
+        for(Integer id :keySet) {
             System.out.print(id + ": ");
             for (Edge e : vertices.get(id).neighbours){
-                System.out.print(e.u.id + "-" + e.v.id + " ");
+                System.out.print(e.getU().id + "-" + e.getV().id + " ");
             }
             System.out.println();
         }
         System.out.println("edges:");
         for (Edge e : edges){
-            System.out.print(e.u.id + "-" + e.v.id + " ");
+            System.out.print(e.getU().id + "-" + e.getV().id + " ");
         }
         System.out.println();
     }

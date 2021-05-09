@@ -1,21 +1,15 @@
 package org.example.model;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@RequiredArgsConstructor
 public class Edge {
 
-    public Vertex u;
-    public Vertex v;
-    public Edge(Vertex u, Vertex v){
-        this.u = u;
-        this.v = v;
-    }
+    private final Vertex u;
+    private final Vertex v;
 
-    public boolean isSame(Edge e){
-        if (e.u == this.u && e.v == this.v){
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public Vertex getAnother(Vertex u){
         if (u == this.u){
@@ -24,4 +18,13 @@ public class Edge {
             return this.u;
         }
     }
+
+    public boolean equals(Edge e){
+        if (e.u == this.u && e.v == this.v){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
