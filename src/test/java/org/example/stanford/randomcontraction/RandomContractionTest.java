@@ -22,7 +22,7 @@ class RandomContractionTest {
     @Test
     public void test2() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("MinCutInput.txt").getFile());
+        File file = new File(classLoader.getResource("kargerMinCut.txt").getFile());
         Graph g = new Graph(file);
         //g.printGraph();
         System.out.println(randomContraction.findMinCut(g));

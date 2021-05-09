@@ -73,23 +73,6 @@ public class QuickSortFromClass {
     }
 
 
-//    private int partition(int[] array, int first, int last) {
-//        System.out.println("first = "+first+" last = "+last);
-//        int pivotVal = array[first];
-//        int leftmark = first + 1;
-//
-//        for(int rightmark=first+1;rightmark<last+1;rightmark++) {
-//            if(array[rightmark] < pivotVal) {
-//                swap(array,leftmark,rightmark);
-//                leftmark++;
-//            }
-//        }
-//
-//        swap(array,leftmark-1,first);
-//        return leftmark-1;
-//    }
-
-
     private void swap(int[] array, int i, int j) {
         int temp = array[i];
         array[i] = array[j];

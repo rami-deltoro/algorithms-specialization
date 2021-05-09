@@ -16,38 +16,35 @@ public class Graph {
     private Map<Integer, Vertex> vertices;
     private List<Edge> edges;
 
-
-    //TODO combine loops
     public Graph(File inputFile) throws FileNotFoundException {
         vertices = new HashMap<>();
         edges = new ArrayList<>();
 
-        Scanner in = new Scanner(inputFile);
-        //add all vertices
-        while (in.hasNextLine()){
-            Scanner line = new Scanner(in.nextLine());
-            int id = line.nextInt();
-            Vertex v = new Vertex(id);
-            //log.info("Adding all Vertices :: Creating new Vertex with id = {}",id);
-            vertices.put(id, v);
+        try (Scanner in = new Scanner(inputFile)) {
+            //add all vertices
+            while (in.hasNextLine()) {
+                int id;
+                try (Scanner line = new Scanner(in.nextLine())) {
+                    id = line.nextInt();
+                }
+                Vertex v = new Vertex(id);
+                vertices.put(id, v);
+            }
         }
-        in = new Scanner(inputFile);
-        //add edges
-        while (in.hasNextLine()){
-            Scanner line = new Scanner(in.nextLine());
-            int idU = line.nextInt();
-            //log.info("Adding edges :: Creating Vertex with id = {} ",idU);
-            Vertex u = vertices.get(idU);
-            while (line.hasNextInt()){
-                int idV = line.nextInt();
-                Vertex v = vertices.get(idV);
-                log.info("Attempting to add edge for idU = {} & idV = {}",idU,idV);
-                if (u.id < v.id){
-                    log.info("Added edge for idU = {} & idV = {}",idU,idV);
-                    addEdge(u, v, 1);
-                } else {
-                    log.warn("          DID NOT :: Add edge for idU = {} & idV = {}",idU,idV);
 
+        try (Scanner in = new Scanner(inputFile)) {
+            //add edges
+            while (in.hasNextLine()) {
+                try (Scanner line = new Scanner(in.nextLine())) {
+                    int idU = line.nextInt();
+                    Vertex u = vertices.get(idU);
+                    while (line.hasNextInt()) {
+                        int idV = line.nextInt();
+                        Vertex v = vertices.get(idV);
+                        if (u.id < v.id) {
+                            addEdge(u, v, 1);
+                        }
+                    }
                 }
             }
         }
