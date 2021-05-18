@@ -52,6 +52,8 @@ public class MaxPairwiseProduct {
 
         return (long) numbers[0] *numbers[1];
     }
+    
+
     private static void swap(int[] array, int i, int j) {
         int temp = array[i];
         array[i] = array[j];

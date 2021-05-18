@@ -13,7 +13,9 @@ class MaxPairwiseProductTest {
 
     @Test
     void stressTest() {
+        int count = 0;
         while(true) {
+            count ++;
             int n = (int)(Math.random() * 3 + 1)+1;
             int[] array = new int[n];
 
@@ -21,13 +23,15 @@ class MaxPairwiseProductTest {
                 array[i] = (int)((Math.random() * 12 - 2) + 1);
             }
 
-            System.out.println(Arrays.toString(array));
+            if(count % 1000000 == 0) {
+                System.out.println("Ok count="+count);
+            }
 
             long resultNaive = MaxPairwiseProduct.getMaxPairwiseProductNaive(array);
             long resultFast = MaxPairwiseProduct.getMaxPairwiseProduct(array);
 
             if(resultFast == resultNaive) {
-                System.out.println("OK");
+                //System.out.println("OK");
             } else {
                 System.out.println("Wrong!  resultFast = "+resultFast+" resultNaive="+resultNaive);
                 System.exit(2);
