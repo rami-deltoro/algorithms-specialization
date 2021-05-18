@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FibonacciTest {
 
     final Fibonacci fibonacci = new Fibonacci();
@@ -17,6 +15,6 @@ class FibonacciTest {
 
     @Test
     void testFaster() {
-        System.out.println(fibonacci.faster(new BigInteger("25")));
+        System.out.println(fibonacci.faster(100));
     }
 }

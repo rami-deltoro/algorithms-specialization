@@ -1,8 +1,7 @@
 package org.example.usd;
 
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class Fibonacci {
 
@@ -17,42 +16,18 @@ public class Fibonacci {
         }
     }
 
-    final Map<BigInteger,BigInteger> resultMap = new HashMap<>();
-    {
-        resultMap.put(BigInteger.ZERO,BigInteger.ZERO);
-        resultMap.put(BigInteger.ONE,BigInteger.ONE);
-    }
+    private BigInteger[] fibonacciNumbers;
 
-    public BigInteger faster(BigInteger bigInteger) {
-        if(bigInteger.compareTo(BigInteger.ONE) <= 0) {
-            return bigInteger;
-        } else {
-            BigInteger result = resultMap.get(bigInteger);
+    public BigInteger faster(int number) {
+        fibonacciNumbers = new BigInteger[number+1];
+        fibonacciNumbers[0] = BigInteger.ZERO;
+        fibonacciNumbers[1] = BigInteger.ONE;
 
-            if(result == null) {
-                System.out.println("Result is null for "+bigInteger);
-                BigInteger bigInteger1 = bigInteger.subtract(BigInteger.ONE);
-                BigInteger bigInteger2 = bigInteger.subtract(BigInteger.TWO);
-
-                result =  naive(bigInteger1).add(naive(bigInteger2));
-                resultMap.put(bigInteger,result);
-            }
-
-
-            return result;
-        }
-    }
-
-
-
-
-    private BigInteger getResultFromMap(BigInteger bigInteger) {
-        BigInteger bigIntegerToReturn = resultMap.get(bigInteger);
-        if(bigIntegerToReturn==null) {
-            bigIntegerToReturn = faster(bigInteger);
-            resultMap.put(bigInteger,bigIntegerToReturn);
+        for(int i=2;i<=number;i++) {
+            fibonacciNumbers[i] = fibonacciNumbers[i-1].add(fibonacciNumbers[i-2]);
         }
 
-        return bigIntegerToReturn;
+        return fibonacciNumbers[number];
     }
+
 }
